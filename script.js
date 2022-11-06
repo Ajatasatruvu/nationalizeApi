@@ -72,3 +72,10 @@ function processCountryData(countries) {
 
   main.append(table);
 }
+
+function handleError(error) {
+  let errorText = document.createElement("p");
+  errorText.id = "errorText";
+  errorText.textContent = error.message;
+  main.append(errorText);
+}
