@@ -54,3 +54,21 @@ async function checkUserCountry(name) {
     throw new Error("Unable to get at the moment. Please try later");
   }
 }
+
+function processCountryData(countries) {
+  let table = document.createElement("table");
+  table.title = "Top 2 probable countries where user might belong";
+
+  let thead = `<thead><tr><th>Country ID</th><th>Probability</th></tr></thead>`;
+  table.innerHTML += thead;
+
+  let tbody = document.createElement("tbody");
+  for (let i = 0; i < countries.length; i++) {
+    let tr = `<tr><td>${countries[i].country_id}</td><td>${countries[i].probability}</td>`;
+    tbody.innerHTML += tr;
+    if (i == 1) break;
+  }
+  table.append(tbody);
+
+  main.append(table);
+}
