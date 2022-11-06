@@ -23,3 +23,34 @@ form.append(searchButton);
 
 main.append(form);
 document.body.append(main);
+
+function processSearch() {
+  let searchText = searchInput.value;
+  main.innerHTML = "";
+  main.append(form);
+  try {
+    if (/^[a-z\s]+$/i.test(searchText)) {
+      checkUserCountry(searchText.trim()).catch((error) => handleError(error));
+    } else {
+      throw new Error(
+        "Name should be atleast 1 character length and contain only alphabets"
+      );
+    }
+  } catch (error) {
+    handleError(error);
+  }
+}
+
+async function checkUserCountry(name) {
+  let response = await fetch(`https://api.nationalize.io?name=${name}`);
+  let countryData = await response.json();
+  if (countryData.hasOwnProperty("country")) {
+    if (countryData.country.length === 0) {
+      throw new Error("We don't have data on this name");
+    } else {
+      processCountryData(countryData.country);
+    }
+  } else {
+    throw new Error("Unable to get at the moment. Please try later");
+  }
+}
