@@ -1,0 +1,53 @@
+body {
+  width: 80%;
+  margin: 0 auto;
+  background-color: #dcdcdc;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  justify-content: center;
+  align-items: center;
+}
+
+input,
+button {
+  font-size: 24px;
+}
+
+button {
+  width: 50%;
+}
+
+table {
+  width: 80%;
+  font-size: 20px;
+  border-collapse: collapse;
+  border: 2px solid #000000;
+  letter-spacing: 1px;
+}
+
+td,
+th {
+  border: 1px solid #000000;
+  padding: 10px 20px;
+  text-align: center;
+}
+
+#errorText {
+  color: red;
+  font-size: 20px;
+}
